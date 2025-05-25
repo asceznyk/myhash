@@ -1,3 +1,4 @@
+#include <assert.h>
 #include "./hashtable.c"
 
 int main() {
@@ -9,18 +10,21 @@ int main() {
 	insert("pitt", 7);
 	insert("clooney", 8);
 	showHashTable();
-	get("cap");
-	get("clooney");
-	get("brad");
+	assert(get("cap") == 10);
+	assert(get("clooney") == 8);
+	assert(get("brad") == 3);
 	update("brad", 5);
-	get("brad");
+	assert(get("brad") == 5);
 	delete("brad");
 	delete("lake");
+	assert(get("brad") == INT_MAX);
+	assert(get("lake") == INT_MAX);
 	showHashTable();
-	get("gal");
+	assert(get("gal") == INT_MAX);
 	update("gal", 3);
 	delete("gal");
 	showHashTable();
 	insert("clooney", 7);
+	assert(get("clooney") == 8);
 	return 0;
 }

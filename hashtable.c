@@ -41,7 +41,7 @@ void insert(char* key, int val) {
 int get(char* key) {
 	unsigned int bucket = hash(key);
 	Entry* curr = hashTable[bucket];
-	while (curr != NULL) {
+	while (curr) {
 		if (strcmp(key, curr->key) == 0) {
 			printf("hashTable['%s'] = %d\n", key, curr->val);
 			return curr->val;
@@ -56,7 +56,7 @@ void update(char* key, int val) {
 	printf("updating '%s'... ", key);
 	unsigned int bucket = hash(key);
 	Entry* curr = hashTable[bucket];
-	while (curr != NULL) {
+	while (curr) {
 		if (strcmp(key, curr->key) == 0) {
 			curr->val = val;
 			printf("\n");
@@ -71,13 +71,13 @@ void delete(char* key) {
 	printf("deleting key '%s' ... ", key);
 	unsigned int bucket = hash(key);
 	Entry* curr = hashTable[bucket];
-	if (strcmp(key, curr->key) == 0) {
+	if (curr != 0 && strcmp(key, curr->key) == 0) {
 		hashTable[bucket] = curr->next;
 		free(curr);
 		printf("\n");
 		return;
 	}
-	while (curr != NULL) {
+	while (curr) {
 		if (curr->next != NULL && strcmp(key, curr->next->key) == 0) {
 			Entry* tmp = curr->next;
 			curr->next = curr->next->next;
