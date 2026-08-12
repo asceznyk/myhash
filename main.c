@@ -3,13 +3,13 @@
 
 int main() {
 	insert("bar", 5);
-	insert("cap", 10);
+  insert("cap", 10);
 	insert("foo", 6);
 	insert("lake", 7);
 	insert("brad", 3);
 	insert("pitt", 7);
 	insert("clooney", 8);
-	showHashTable();
+	show_hashtable();
 	assert(get("cap") == 10);
 	assert(get("clooney") == 8);
 	assert(get("brad") == 3);
@@ -19,12 +19,13 @@ int main() {
 	delete("lake");
 	assert(get("brad") == INT_MAX);
 	assert(get("lake") == INT_MAX);
-	showHashTable();
+	show_hashtable();
 	assert(get("gal") == INT_MAX);
 	update("gal", 3);
 	delete("gal");
-	showHashTable();
+	show_hashtable();
 	insert("clooney", 7);
 	assert(get("clooney") == 8);
 	return 0;
 }
+
